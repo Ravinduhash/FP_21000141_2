@@ -30,20 +30,21 @@ object Q4 extends App{
   }
   var x = 0
   while((currentAttendence-x*change)>0){
-    profits = profits :+ profit(x,"increment")
+    profits = profits :+ profit(x,"increase")
     ticket = ticket:+ (currentPrice+x)
     x= x+5
   }
 
-  x=0
+  x=5
   while ((currentPrice - x) > 0) {
-    profits = profits :+ profit(x, "decrement")
+    profits = profits :+ profit(x, "decrease")
     ticket = ticket:+ (currentPrice-x)
     x = x + 5
   }
 
   var max = 0.0
   var index = 0
+
   for (i <- 1 to (profits.length - 1)) {
     if (profits(i) > max) {
       max = profits(i)
@@ -52,9 +53,6 @@ object Q4 extends App{
 
   }
   println("The maximum profit is Rs."+ max+".\nThe ticket price is Rs."+ticket(index))
-
-
-
 
 }
 
