@@ -7,6 +7,7 @@ object Q4 extends App{
   val performaceCost = 500.00
   val attendeeCost = 3.00
   var profits = Array(0.0)
+  var ticket = Array(0.0)
 
   //  var changingPrice = readLine("Enter the changing ticket value: ").toInt
   //  var typeChange = readLine("Enter the type decrease or increase: ").toLowerCase()
@@ -30,26 +31,27 @@ object Q4 extends App{
   var x = 0
   while((currentAttendence-x*change)>0){
     profits = profits :+ profit(x,"increment")
-    println(x+"--"+(currentAttendence-x*change))
+    ticket = ticket:+ (currentPrice+x)
     x= x+5
   }
-  for(i<-profits){
-    println(i)
-  }
+
   x=0
   while ((currentPrice - x) > 0) {
     profits = profits :+ profit(x, "decrement")
-    println(x + "--" + (currentPrice - x))
+    ticket = ticket:+ (currentPrice-x)
     x = x + 5
   }
-  for (i <- profits) {
-    println(i)
-  }
+
   var max = 0.0
+  var index = 0
   for (i <- 1 to (profits.length - 1)) {
-    if (profits(i) > max) max = profits(i);
+    if (profits(i) > max) {
+      max = profits(i)
+      index = i
+    }
+
   }
-  println("The maximum profit is Rs."+ max+".\nThe ticket price is ")
+  println("The maximum profit is Rs."+ max+".\nThe ticket price is Rs."+ticket(index))
 
 
 
